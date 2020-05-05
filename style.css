@@ -1,0 +1,11 @@
+#outer {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+}
+
+#inner {
+    width: 35px;
+    height: 35px;
+    background-color: yellow;
+}

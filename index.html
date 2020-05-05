@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--- DOM example2 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Test DOM</title>
+</head>
+<body>
+    <h1 id="easy">Header!</h1>
+    <ul>
+        <li><a href="#">Link1</a></li>
+        <li class="simple"><a href="#">Link2</a></li>
+        <li><a href="#" class="simple">Link3</a></li>
+    </ul>
+
+    <div id="outer">
+        <div id="inner"></div>
+    </div>
+</body>
+<script>
+    //DOM example
+    document.querySelectorAll('.simple')[1].style.backgroundColor = 'red';
+
+    //DOM example2
+    var inner = document.querySelector('#inner');
+    var outer = document.querySelector('#outer');
+
+    inner.addEventListener('click', innerListener);
+    outer.addEventListener('click', outerListener);
+
+    function innerListener(event) {
+        console.log('Clicked inner!');
+    }
+
+    function outerListener(event) {
+        console.log('Clicked outer!');
+
+    }
+</script>
+</html>
+
+<script>
+    //Basics example
+    var condition = null;
+    var anotherCondition = false;
+    
+    if (condition) {
+      console.log('Executed!');
+    } else if (anotherCondition) {
+      console.log('Still Executed!');
+    } else {
+      console.log('Not executed');
+    }
+
+
+    //Array example
+    var array = [1,2,3,4];
+
+    array.unshift('new');
+    array[array.indexOf('new')] = 'old';
+
+    var newArray = array.splice();
+
+    console.log(array);
+
+
+    //Object example
+    function Person() {
+        this.name = 'Max';
+        this.greet = function () {
+            console.log('Hello, I am ' + this.name)
+        }
+    }
+
+    Person.prototype.greet = function () {
+        console.log('Hello')
+    };
+
+    var person = new Person();
+    person.name = 'Anna';
+
+    Person.prototype.name = 'Chris';
+
+    var anotherPerson = new Person();
+
+    person.greet();
+    anotherPerson.greet();
+
+
+    //Function example
+    function generator(input) {
+        var number = input;
+        return function () {
+            return number * 2;
+        };
+    }
+
+    var calc = generator(900);
+    console.log(calc());
+
+
+    //Built-in Function & Object
+    var rnd = Math.floor(Math.random() * 100 +1);
+    console.log(rnd);
+
+
+    //AJAX example
+    var http = new XMLHttpRequest();
+    var url = 'http://jsonplaceholder.typicode.com/posts';
+    var method = 'GET';
+
+    http.open(method, url);
+    http.onreadystatechange = function () {
+        if (http.readyState === XMLHttpRequest.DONE && http.status === 200) {
+            console.log(JSON.parse(http.responseText));
+        } else if (http.readyState === XMLHttpRequest.DONE && http.status !== 200) {
+            console.log('Error!');
+        }
+    };
+    http.send();
+
+</script>
+    
